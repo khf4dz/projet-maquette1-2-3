@@ -1,0 +1,71 @@
+
+
+body {
+  padding: 500px;
+  background: skyblue;
+}
+
+.header {
+  padding: 30px;
+  text-align: right;
+  background: white;
+}
+
+.header h1 {
+  font-size: 10px;
+}
+
+.tete a {
+  float: left;
+  display: block;
+  color: bisque;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.tete a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.Corp {
+  background: white;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.conteneur {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.one {
+  background-color: bisque;
+  width: 30%;
+  height: 30%;
+  justify-content: flex-start;
+}
+
+.two {
+  background-color: bisque;
+  width: 30%;
+  height: 30%;
+}
+
+.three {
+  background-color: bisque;
+  justify-content: flex-start;
+  width: 30%;
+  height: 30%;
+}
+
+.pied {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+

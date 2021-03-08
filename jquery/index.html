@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Mon H1</h1>
+    <h2>Mon H2</h2>
+    <ul>
+      <li>are unaffected by this style</li>
+      <li class="cacher">will still show a bullet</li>
+      <li>and have appropriate left margin</li>
+    </ul>
+    <button onclick="hideLi()" type="button" class="btn btn-outline-dark">
+      Dark
+    </button>
+    <button onclick="hideLiCacher()" type="button" class="btn btn-outline-dark">
+      Dark
+    </button>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.js"></script>
+    <script>
+      function hideLi() {
+        $("ul li:first-child").hide();
+      }
+      function hideLiCacher() {
+        $(".cacher").hide();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset="utf-8" />
+    <meta  name="viewport"  content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/all.min.css"/>       <!-- Link for Icon (not necessary) -->
+
+<title>SVG Image Progress Bar Examples</title>
+<style>
+html,* { font-family: 'Inter'; box-sizing: border-box; }
+body { background-color: #fafafa; line-height:1.6;}
+.lead { font-size: 1.5rem; font-weight: 300; }
+.container { margin: 150px auto; max-width: 960px; }
+i, span { margin: 0 40px; }
+</style>
+</head>
+
+<body>
+<div id="jquery-script-menu">   
+    <div class="container">
+        <h1>SVG Image Progress Bar Examples</h1>
+        <p class="lead">A lightweight and easy-to-use jQuery progress bar plugin that visualizes the percentage value by filling the background color of your favorite SVG image.</p>
+        <div style="display:flex;">
+
+        <!-- with <i>, id and data-class for apply style, (font Size for resize this <i>) -->
+        <i id="myId" data-class="myClass" data-percent="90" data-color="#ff5733" data-animation="6500"
+            style="font-size: 156px;" class="fab fa-html5 progressIcon"></i>
+
+        <!-- data-percent for percent, data-color for color : accept hexa, rgb...-->
+        <i data-class="myClass" data-percent="90" data-color="rgb(160, 255, 51)" data-animation="6000" style="font-size: 156px;"
+            class="fab fa-css3 progressIcon"></i>
+
+        <!-- data-animation for duration animation in ms -->
+        <span data-percent="80" data-color="rgba(168, 255, 51, 1)" data-animation="6500" style="font-size: 98px;"
+            class="bi bi-arrow-down-square-fill progressIcon"></span>
+
+            <svg data-percent="80" data-color="#ff5733" xmlns="http://www.w3.org/2000/svg" width="68" height="68"
+            fill="currentColor" class="bi bi-alarm-fill progressIcon" viewBox="0 0 16 16">
+            <path d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z" />
+        </svg>
+        </div>
+    </div>
+</div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Import this script -->
+    <script src="js/progress.js"></script>  
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>

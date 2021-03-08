@@ -1,0 +1,47 @@
+.conteneur-flexible {
+  display: flex;
+
+  font-size: 20px;
+
+  background-color: blanchedalmond;
+
+  border: 2px solid sienna;
+
+  box-sizing: border-box;
+
+  margin: 10px 00px;
+
+  height: auto;
+}
+
+.ligne {
+  flex-flow: row wrap;
+}
+
+.colonne {
+  flex-flow: column wrap;
+}
+
+.element-flexible {
+  flex-basis: 20%;
+
+  flex-grow: 2;
+
+  flex-shrink: 0;
+
+  background-color: beige;
+
+  padding: 10px 0px;
+
+  text-align: center;
+
+  border: 2px solid black;
+
+  box-sizing: border-box;
+
+  margin: 5px;
+}
+
+ul {
+  list-style-image: url("sqpurple.gif");
+}

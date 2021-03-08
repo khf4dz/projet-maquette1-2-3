@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Hello, world!</title>
+  </head>
+  <body onload="notes">
+    <div class="container">
+      <a href="https://www.Google.com" target="_blank"
+        ><button type="button" class="btn btn-outline-primary abc" btn-lg>
+          Google
+        </button></a
+      >
+      <a href="https://www.Microsoft.com" target="_blank"
+        ><button type="button" class="btn btn-outline-secondary abc" btn-lg>
+          Microsoft
+        </button></a
+      >
+      <a href="https://www.Apple.com" target="_blank"
+        ><button type="button" class="btn btn-outline-success abc" btn-lg>
+          Apple
+        </button></a
+      >
+      <a href="https://www.Sumsung.com" target="_blank"
+        ><button type="button" class="btn btn-outline-danger abc" btn-lg>
+          Sumsung
+        </button></a
+      >
+      <button
+        type="button"
+        class="btn btn-outline-success abc"
+        onclick="changerPop()"
+        btn-lg
+      >
+        boutton
+      </button>
+      <button
+        type="button"
+        class="btn pop btn-lg btn-danger"
+        data-toggle="popover"
+        title="Popover title"
+        data-content="And here's some amazing content. It's very engaging. Right?"
+      >
+        Click to toggle popover
+      </button>
+      <button
+        class="boutton"
+        type="button"
+        class="btn btn-outline-primary"
+        btn-lg
+      >
+        w3schools
+      </button>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Eleves</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row ">1</th>
+            <td>Mark</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>torre</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Larry</td>
+            <td>9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+      function changer() {
+        $(".boutton").attr("href", "http://www.w3schools.com/");
+        $(".abc ").text("w3schools");
+      }
+      function changerPop() {
+        $(".pop").attr("data-content", "descripton de la popover");
+        $(".pop").text("w3schools");
+      }
+      $(function () {
+        $('[data-toggle="popover"]').popover();
+      });
+
+      function getClass(note) {
+        // note cest notre parametre
+        switch (
+          true // si en passe au 3 eme cas de preferable de faire suitch
+        ) {
+          case note < 10: // swite(true) psk jai des expretions
+            return "danger"; // note (=<) 10 en compare tjr deux operandes
+          case note <= 15: // note >= && note <= 15:
+            return "info";
+          default:
+            return "success";
+        }
+      }
+      function notes() {
+        $("td:last-child").each(function () {
+          // let note=$(this).text();
+          // let Class=getClass (note);
+          // $(this).html('<button class="btn btn- '+classeNote+'">' +note+ '</button>');
+          $(this).html('<button type="button" class="btn btn-'+getClass($(this).text())+'">'+ $(this).text() +'</button>');
+        });
+      }
+    </script>
+  </body>
+</html>

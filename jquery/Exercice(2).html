@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Hello, world!</title>
+
+    <style>
+      p {
+        display: none;      
+      }      
+      div:hover p {
+        display: block;
+      }
+      </style>
+
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col-md-9">
+          <img src="nature1.jpg" class="img1 mb-3" width="923" height="400"  />
+        </div>
+        <div class="col-md-3 ">
+          <p class="disc">
+            image Lorem ipsum donec id elit non mi porta gravida at eget metus.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 petit">
+          <img src="nature2.jpg" class="img" width="250" height="150" />
+          <p>
+            image1 Lorem ipsum donec id elit non mi porta gravida at eget metus.
+          </p>
+        </div>
+        <div class="col-md-2">
+          <img src="nature3.jpg" class="img" width="250" height="150" />
+          <p>
+            image2 Lorem ipsum donec id elit non mi porta gravida at eget metus.
+          </p>
+        </div>
+        <div class="col-md-2">
+          <img src="nature4.jpg" class="img" width="250" height="150" />
+          <p>
+            image3 Lorem ipsum donec id elit non mi porta gravida at eget metus.
+          </p>
+        </div>
+        <div class="col-md-2">
+          <img src="nature5.jpg" class="img" width="250" height="150" />
+          <p>
+            image4 Lorem ipsum donec id elit non mi porta gravida at eget metus.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+      //   console.log($(".img")[0].attr("src"));
+
+      $(".img").click(function () {
+        $(".img1").attr("src", $(this).attr("src")); //il va a la classe .img1 et cherche latrebu src
+        $(".disc").text($(this).next().text());     //il va a la classe .disc exactement le texte et cherche le frere .next ou on va click et le  renplace avec sont texte
+      });
+    </script>
+  </body>
+</html>

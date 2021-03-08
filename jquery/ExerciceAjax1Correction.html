@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <title>exepmle</title>
+  </head>
+  <body>
+    <br />
+
+    <button type="button" onclick="requete()" class="btn btn-primary">
+      Primary
+    </button>
+    <div id="contenu"></div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+
+    <script>
+      function requete() {
+        let request = $.ajax({
+          url: "https://jsonplaceholder.typicode.com/posts/",
+          method: "GET",
+          dataType: "json",
+        });
+
+        request.done(function (response) {
+          let tab = [];
+          $.each(response, function () {
+            tab.push(this.userId);
+          });
+
+          //tab=Array.from(new Set(tab));
+          tab = elimineDoublon(tab);
+          $("#contenu").html(genTab(tab));
+        });
+
+        request.fail(function (http_error) {
+          //Code à jouer en cas d'éxécution en erreur du script du PHP
+
+          let server_msg = http_error.responseText;
+          let code = http_error.status;
+          let code_label = http_error.statusText;
+          alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+        });
+      }
+
+      function elimineDoublon(tab) {
+        let tab2 = [];
+        for (i = 0; i < tab.length; i++) {
+          if (tab2.indexOf(tab[i]) === -1) {
+            tab2.push(tab[i]);
+          }
+        }
+        return tab2;
+      }
+
+      function genTab(tab) {
+        let chaine =
+          '<table class="table table-striped"><thead>   <tr><th scope="col">#</th></tr></thead><tbody>';
+        for (i = 0; i < tab.length; i++) {
+          chaine += "<tr> <td>" + tab[i] + "</td></tr>";
+        }
+        chaine += "</tbody></table>";
+        return chaine;
+      }
+    </script>
+  </body>
+</html>

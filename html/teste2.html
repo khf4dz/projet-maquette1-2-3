@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <h1>Formulaire dinscription</h1>
+  <body>
+    <h2>Info perssonnel</h2>
+
+    <form action="/action_page.php">
+      <input type="radio" id="male" name="gender" value="M" />
+      <label for="Homme">Homme</label><br />
+      <input type="radio" id="female" name="gender" value="Mme" />
+      <label for="Femme">Femme</label><br />
+      <input type="radio" id="other" name="gender" value="Autre" disabled/> 
+      <label for="other">Autre</label> <br /><br />
+      <label for="fname">Nom:</label> <br />
+
+      <input type="text" id="fname" name="fname" value="Tom" /><br />
+      <label for="lname">Prenom:</label><br />
+      <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+      <input type="submit" value="Submit" /><br /><br />
+      <label for="datemax">Date de naissance:</label>
+      <input
+        type="date"
+        id="datemax"
+        name="datemax"
+        max="1979-12-31"
+      /><br /><br />
+
+      <label for="pwd">Email:</label><br />
+      <input type="email" id="pwd" name="pwd" /><br /><br />
+
+      <label for="myfile">Selectionne un c.v:</label>
+
+      <input type="file" id="myfile" name="myfile" /><br /><br /><br />
+
+      <label for="username">Nom:</label> <br />
+      <input type="text" id="username" name="username" /><br />
+      <label for="pwd">mot de passe:</label><br />
+      <input type="password" id="pwd" name="pwd" /><br />
+      <input type="submit" value="Submit" /><br />
+    </form>
+  </body>
+</html>

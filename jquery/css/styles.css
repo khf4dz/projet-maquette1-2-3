@@ -1,0 +1,13 @@
+img {
+    width: 100px;
+    height: 100px;
+}
+
+img:first-child {
+    width : 500px;
+    height: 350px;
+}
+
+.images p {
+    display: none;
+}

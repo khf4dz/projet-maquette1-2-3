@@ -1,0 +1,41 @@
+body {
+    background-color: rgba(13, 37, 53, 0.5);
+}
+p {
+  margin: 20px;
+  padding: 10px;
+  background: rgb(120, 137, 148);
+  color: white;
+}
+
+#p1 {
+  background: rgba(13, 37, 53, 0.5);
+}
+#p2 {
+  background: rgb(33, 163, 31);
+}
+
+#p3 {
+  background: #FA09DC;
+}
+.pbleu {
+  background: blue;
+}
+#vedette {
+  border: 10px solid gray;
+  width: 600px;
+  height: 300px;
+  margin-left: 400px;
+}
+
+.image1 {
+  border: 8px solid rgb(25, 0, 255);
+  width: 300px;
+  height: 100px;
+}
+.image2 {
+  border: 8px solid rgb(116, 116, 50);
+  width: 300px;
+  height: 100px;
+}
+

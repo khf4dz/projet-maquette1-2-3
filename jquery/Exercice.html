@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta   name="viewport"   content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Mon H1 <b>est en gras</b></h1>
+    <h2>Mon H2</h2>
+    <button onclick="modifTexteH1()">changer le texte du H1</button>  <!-- quant en click sur ce bouton il va affiche texte du H1 changé -->
+    <button onclick="modifHtmlH1()">changer le HTML du H1</button>  <!-- quant en click sur ce bouton il va affiche <p>........</p>-->
+    <button onclick="changerGt()">changerGt</button>             <!-- quant en click sur ce bouton il va affiche 10 -->
+    <button onclick="hidebouton()">cacher le Bouton</button>  <!-- quant en click sur ce bouton il va affiche  -->
+    <h3>A demonstration of the :in-range selector.</h3>
+    <form onsubmit="valid()">
+      <input type="number" required />
+      <input type="submit" value="valider" />
+    </form>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script>
+
+        
+      function modifTexteH1() {
+        $("h1").text("texte du H1 changé");
+      }
+      function modifHtmlH1() {
+        $("h1").html("<p>html du H1 changé </p>");
+        alert($("h1").html());
+      }
+      function changerGt() {
+        $("input[type=Number]").val(10);
+      }
+      
+      function valid() {
+        alert($("input[type=number]").val());
+      }
+
+      $(document).ready(function () {      //*--syntax pour faire plusieur action a linterier de jqeury on va les mettres dans $(document).ready(function () {  });
+        $("h1").click(function () {       //*--this ici est different a levenement jgeury
+          alert("h1 va disparaitre");
+          $(this).hide();
+        });
+      });
+
+
+      function hidebouton() {
+        let bouton = $("button"); //*-- il va selectionne un ellement, si on a bosoin de faire un traitement sur un ellement de Dom il faut utilise "this" il faut gerer evenement a linterieur de jquery --/*
+        console.log($(this));
+      }
+    </script>
+  </body>
+</html>

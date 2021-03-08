@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <title>Ajax</title>
+  </head>
+  <body>
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <div id="oui"></div>
+    <button type="button" onclick="requete()" class="btn btn-primary">
+      Primary
+    </button>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script>
+      function requete() {
+        let request = $.ajax({
+          url: "https://jsonplaceholder.typicode.com/posts/",
+          method: "GET",
+          dataType: "json",
+        });
+        request.done(function (response) {
+          let tab = [];
+          $.each(response, function () {
+            tab.push(this.userId);
+          });
+          let x = Array.from(new Set(tab));
+          $("#oui").text(x);
+
+       // for (i = 0; i < x.length; i++) {
+       //     $(".table").append("<tr><td>" + x[i] + "</tr></td>");
+       // }
+       });
+       function genTab(tab){
+           let chaine ='<table class="table table-striped table-dark"><thead><tr><th scope="col">#</th></tr></thead><tbody>';
+        for (i = 0; i < tab.length; i++){
+            chaine+='<tr><td>'+tab[i]+'</tr></td>';                 
+        }         
+        chaine+='</tbody></table>';
+        return chaine;
+       }
+
+
+        request.fail(function (http_error) {
+          //Code à jouer en cas d'éxécution en erreur du script du PHP
+          let server_msg = http_error.responseText;
+          let code = http_error.status;
+          let code_label = http_error.statusText;
+          alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+        });
+        request.always(function () {
+          //Code à jouer après done OU fail dans tous les cas
+        });
+      }
+    </script>
+  </body>
+</html>

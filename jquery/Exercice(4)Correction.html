@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1  shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>tay bosse</title>
+  </head>
+  <body>
+    <header>
+      <div><h1 class="d-flex justify-content-center">Commande</h1></div>
+    </header>
+    <main class="d-flex justify-content-center">
+      <form>
+        <div class="form-group">
+          <label for="selection du menu">selection du produit</label>
+          <select class="form-control" id="produit">
+            <option id="choix" selected>----</option>
+            <option id="choix1">sandwich</option>
+            <option id="choix2">pizza</option>
+            <option id="choix3">burger</option>
+          </select>
+        </div>
+        <div id="selection"></div>
+        <!-- pour sandwich -->
+        <div class="pourS" id="sandwich">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="composition" id="salade" value="salade"/>
+            <label class="form-check-label" for="salade">salade</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"  type="checkbox" name="composition" id="tomate" value="tomate"/>
+            <label class="form-check-label" for="tomate">tomate</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input  class="form-check-input" type="checkbox" name="composition" id="oignon" value="oignon"/>
+            <label class="form-check-label" for="oignon">oignon</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="mayo" value="mayonnaise"/>
+            <label class="form-check-label" for="mayo">mayonnaise</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="saucek" value="ketchup"/>
+            <label class="form-check-label" for="saucek">ketchup</label>
+          </div>
+        </div>
+
+        <!-- pour pizza -->
+        <div class="pourP" id="pizza">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="typeP" id="napolitaine" value="napolitaine"/>
+            <label class="form-check-label" for="napolitaine">napolitaine</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="typeP" id="frommage" value="4 frommage"/>
+            <label class="form-check-label" for="frommage">4 frommage</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="typeP" id="saumon" value="saumon"/>
+            <label class="form-check-label" for="saumon">saumon</label>
+          </div>
+        </div>
+        <!-- pour burger -->
+        <div class="pourB" id="burger">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="taille" id="xl" value="taille xl"/>
+            <label class="form-check-label" for="xl">xl</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="taille" id="l" value="taille L"/>
+            <label class="form-check-label" for="l">l</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="taille" id="m" value="taille M"/>
+            <label class="form-check-label" for="m">m</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="quantite">quantité:</label>
+          <input type="number" class="form-control" id="quantite" min="1" />
+        </div>
+        <button type="button" class="btn btn-primary">Valider</button>
+        <div>
+          <label for="retour">resume menu</label>
+          <textarea class="form-control" id="recap" rows="3"></textarea>
+        </div>
+      </form>
+    </main>
+    <!--script java-->
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      // $(document).ready(function () {
+      //   $("#produit").val($("#choix").val());
+      // });
+      // $("#produit").change(function () {
+      //   $("#recap").val("");
+      //   switch (true) {
+      //     case $(this).val() == "sandwich":
+      //       return $("#selection").html($(".pourS").html());
+      //     case $(this).val() == "burger":
+      //       return $("#selection").html($(".pourB").html());
+      //     default:
+      //       return $("#selection").html($(".pourP").html());
+      //   }
+      // });
+      // $('[type="button"]').click(function () {
+      //   let t = [];
+      //   $(":checked").each(function () {
+      //     t.push($(this).val());
+      //   });
+      //   console.log(t);
+
+      //   $("#recap").val($("#quantite").val() + " " + t.join(" "));
+      // });
+
+      $(document).ready(function () {
+        $("#produit").val($("#choix").val());            // 6       id de select
+        $("#recap").val("");                             //         fonction val qui recuper la valeur de formleur
+        $("#sandwich,#pizza,#burger").hide();             
+
+        $("#produit").change(function () {               // 2    etape   pour masque les produits 
+          $(".pourS,.pourP,.pourB").hide();
+
+          $("#" + $("#produit").val()).slideDown();    // 1    selecteur dinamique// $("#produit").val() -> # + pizza//.slideDown faite glisser vers le bas(afficher)tt les element cache
+        
+          let e = $("#produit").val();                 // explication de prescidan
+          $("#"+ e).slideDown();  
+        });
+
+      });
+      $('[type="button"]').click(function () {             //
+        let t = [];                                                       // t = tableau des ellement coche est recupere
+
+        $("#" + $("#produit").val() + ":checked").each(function () {     //  ":checked"  chaque element qui a la valeur est ete coche dans la div qui a id = un de ses produit //.each = tous -> les choix quand on a coche
+          t.push($(this).val());                                        //  4     t.push ->  t cest le tableau // push our qu il insert dans le tableau  //
+        });
+
+        $("#recap").val(                                // recap id de texarea  
+          $("#quantite").val()+" "+ $("#produit").val()+" "+t.join(",")      // 5   "t" cest le tableau // .join    tout les element de tableau qui sont separe par ","
+        );
+      });
+    </script>
+  </body>
+</html>

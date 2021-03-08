@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <title>exepmle</title>
+  </head>
+  <body onload="requete()">
+    <br />
+    <div class="container-fluid">
+      <div class="row posts"></div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+
+    <script>
+      function requete() {
+        let request = $.ajax({
+          url: "https://jsonplaceholder.typicode.com/posts/",
+          method: "GET",
+          dataType: "json",
+        });
+
+        request.done(function (response) {
+          let tab = [];
+
+          $.each(response, function () {
+            tab.push({ id: this.id, titre: this.title });
+          });
+
+          $(".posts").html(affichPosts(tab));
+
+          commentaires();
+        });
+
+        request.fail(function (http_error) {
+          //Code à jouer en cas d'éxécution en erreur du script du PHP
+
+          let server_msg = http_error.responseText;
+          let code = http_error.status;
+          let code_label = http_error.statusText;
+          alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+        });
+      }
+
+      function affichPosts(tab) {
+        let chaine = "";
+        let i;
+        for (i = 0; i < 12; i++) {
+          chaine +='<div class="card col-md-2"><h2>' + tab[i].id + '</h2><div class="card-body"><h5 class="card-title">' + tab[i].titre + "</h5>";
+          chaine +='<button class="btn btn-primary commentaires" id="' + tab[i].id + '">commentaires</button ></div></div>';
+        }
+        return chaine;
+      }
+
+      function commentaires() {
+        // https://jsonplaceholder.typicode.com/posts/1/comments
+        $(".commentaires").click(function () {
+          // console.log("com suite au click");
+          let id=$(this).attr("id");
+           //console.log(id);
+          let request = $.ajax({
+            url: "https://jsonplaceholder.typicode.com/posts/"+id+"/comments",
+            method: "GET",
+            dataType: "json",
+          });
+
+          request.done(function (response) {
+            //console.log(response);
+            let commentaires="<ol>";
+            $.each(response, function () {
+                commentaires+='<li>'+this.body+'</li>';
+            });
+            commentaires+="</ol>";
+            //console.log(commentaires);
+            $("#"+id).after(commentaires);
+          });
+
+          request.fail(function (http_error) {
+            let server_msg = http_error.responseText;
+            let code = http_error.status;
+            let code_label = http_error.statusText;
+            alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+#tete {
+  background: green;
+  min-height: 100px;
+}
+
+#main {
+  background: greenyellow;
+  min-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#centre {
+  background: darkblue;
+  min-height: 100px;
+  width: 60%;
+}
+
+#centre .conteneur img {
+  width: 200px;
+  height: 200px;
+}
+
+.conteneur {
+  background: royalblue;
+  min-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.cont2 {
+  justify-content: space-between;
+}
+.element {
+  background: darkorange;
+  min-height: 300px;
+}
+
+ul {
+  width: 40%;
+}
+
+#left {
+  background: red;
+  min-height: 100px;
+  width: 20%;
+}
+
+#right {
+  background: purple;
+  min-height: 100px;
+  width: 20%;
+}
+
+footer {
+  background: deeppink;
+  min-height: 100px;
+}
+
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 800px) {
+  .one,
+  .two {
+    width: 100%;
+
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tete a {
+    float: none;
+
+    width: 100%;
+  }
+}

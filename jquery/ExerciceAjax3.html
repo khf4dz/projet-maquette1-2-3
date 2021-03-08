@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Albums, photos!</title>
+  </head>
+  <body onload="requete()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="row col-md-6 alb font-italic text-monospace">Album</div>
+        <div class="row col-md-6 justify-content-center text-black-50 text-uppercase  img">
+          Images
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.js"></script>
+
+    <script>
+      function requete() {
+        let request = $.ajax({
+          url: "https://jsonplaceholder.typicode.com/albums",
+          method: "GET",
+          dataType: "json",
+        });
+        request.done(function (response) {
+          console.log(response);
+          let tab = [];
+          $.each(response, function () {
+            console.log(this);
+            tab.push({ id: this.id, titre: this.title });
+          });
+          console.log(tab);
+          $(".alb").html(affichAlbums(tab));
+          Photos();
+        });
+      }
+      function affichAlbums(tab) {
+        let chaine = "";
+        let i;
+        for (i = 0; i < 12; i++) {
+          chaine += '<div class="card text-center col-md-5"><h4>' + tab[i].id +"</h4><h6>" + tab[i].titre + "</h6>";         
+          chaine +='<button class="btn btn-info" id="' + tab[i].id + '"></button ></div>';
+        }
+        return chaine;
+      }
+      function Photos() {
+        $(".btn").click(function () {
+          console.log("present");
+          let id = $(this).attr("id");
+          let request = $.ajax({
+            url:
+              "https://jsonplaceholder.typicode.com/albums/" + id + "/photos", // id dinamique -> sa chonge que url
+            method: "GET",
+            dataType: "json",
+          });
+          request.done(function (response) {
+            let photo = "";
+            $.each(response, function () {
+              photo += '<img src="' + this.thumbnailUrl + '">';
+            });
+            $(".img").html(photo);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

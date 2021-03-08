@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Hello, world!</title>
+  </head>
+  <body>
+     <div class="container-fluid">
+      <h3>Commande</h3>
+     <div class="col-2 my-2">
+        <label for="inputState"></label>
+        <select id="inputState" class="form-control">
+          <option selected>Selectionez le Produit</option>
+          <option value="Sandwitch">Sandwitch</option>
+          <option value="Pizza">Pizza</option>
+          <option value="Burger">Burger</option>
+        </select>
+      </div>
+
+    <div class="form-check choix option sandwitch">
+        <h3>Ingredients</h3>
+        <input class="form-check-input" type="checkbox" value="tomate" id="tomate" />
+        <label class="form-check-label" for="tomate">tomate</label>
+        <input class="form-check-input" type="checkbox" value="salade" id="salade"/>
+        <label class="form-check-label" for="salade">salade</label>
+        <input class="form-check-input" type="checkbox" value="oignon" id="oignon"/>
+        <label class="form-check-label" for="oignon">oignon</label>
+    </div>  
+      <div class="form-check choix option pizza">
+        <h3>Modele</h3>
+        <input class="form-check-input" type="radio"  name="pizza" id="neptune" value="neptune" />
+        <label class="form-check-label" for="neptune"> neptune </label>
+        <input class="form-check-input" type="radio" name="pizza" id="napolitaine" value="napolitaine" />
+        <label class="form-check-label" for="napolitaine"> napolitaine </label>
+        <input class="form-check-input" type="radio"  name="pizza"  id="regina" value="regina"/>
+        <label class="form-check-label" for="regina"> regina </label>
+      </div>    
+      <div class="form-check choix option burger">
+        <h3>Taille</h3>
+        <input class="form-check-input" type="radio" name="burger" id="M" value="M">
+        <label class="form-check-label" for="M">M</label>
+        <input class="form-check-input" type="radio" name="burger" id="L" value="L">
+        <label class="form-check-label" for="L">L</label>
+        <input class="form-check-input" type="radio" name="burger" id="XL" value="XL">
+        <label class="form-check-label" for="XL">XL</label>
+      </div>
+
+      <div class="form-check my-4">
+        <input type="number">            
+   </div>   
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Details de la commande</label>
+        <textarea class="form-control" id="" rows="3"></textarea>
+      </div>
+    </div>
+      <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.js"></script> 
+      <script>    
+
+
+
+  
+
+  $("select").change(function(){
+let produit = $(this).val();
+   $(".choix").hide();
+   $("."+produit).show();
+
+ });
+
+
+   
+        </script> 
+  </body>
+</html>

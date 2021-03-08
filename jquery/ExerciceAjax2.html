@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>exepmle</title>
+  </head>
+  <body onclick="requete()">       <!--  -->
+    <br />
+
+
+    <div class="card col-md-2">
+        <h2>ID du post</h2>
+        <div class="card-body">
+          <h5 class="card-title">titre du post</h5>
+
+          <button type="button" class="btn btn-primary btnc">
+            commentaires
+          </button>
+         </div>
+      </div>       
+  
+
+    <div class="row" ></div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+
+    <script>
+      function requete() {
+        let request = $.ajax({
+          url: "https://jsonplaceholder.typicode.com/posts",
+          method: "GET",
+          dataType: "json",
+        });
+
+        request.done(function (response) {                    
+            // console.log(response);            // quesquil  va me retourne mon id  comme donne
+                let tab = [];                  // declarer un tab // on declare pas un var chaque etiration
+            $.each(response, function (){     // $("td").each() -> element du DOM  // $.each( , )  ->  specifique au tableau == $(tab).each
+            // console.log(this);           // this tt cour cest pour lelement encore  // les declarations sa ce met a lexterieur de la boucle
+            tab.push({ id : this.id , titre : this.title});   // juste puisque cest composer de recupere (id,title) on met un objet {..:this...,..:this...} pour inserer dans tab // pour les considerer comme un seul element            
+            });
+           // console.log(tab);
+           $(".row").html(affichPostes(tab));            // fonction pour recuperer les titres  // en a fai en bas
+          });
+            
+///////////////////////////////////////
+          tab = elimineDoublon(tab);
+          $(".row").html(genTab(tab));
+          });
+      function elimineDoublon(tab) {
+        let tab2 = [];
+        for (i = 0; i < tab.length; i++) {
+          if (tab2.indexOf(tab[i]) === -1) {
+            tab2.push(tab[i]);
+          }
+        }
+        return tab2;
+      }
+      function genTab(tab) {
+        let chaine ="";
+        let i ;
+        for (i = 0; i < 12 ; i++) {
+          chaine += '<div class="card col-md-2"><h2>'+ tab[i].id +'</h2><div class="card-body"><h5 class="card-title">' + tab[i].titre + '</h5><button type="button" class="btn btn-primary btnc">commentaires</button></div></div>';
+        }  
+        return chaine;
+      }
+      //////////////////////////////////////
+        request.fail(function (http_error) {
+          //Code à jouer en cas d'éxécution en erreur du script du PHP
+          let server_msg = http_error.responseText;
+          let code = http_error.status;
+          let code_label = http_error.statusText;
+          alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+        });
+      }
+      //generer du html 
+   function affichPostes (tab) {    // fonction pour recuperer les titres //
+    let chaine ="";
+    let i ;
+    for (i = 0; i < 12; i++){
+    chaine +='<div class="card col-md-2"><h2>'+ tab[i].id +'</h2><div class="card-body"><h5 class="card-title">titre du post</h5>';   //tab[i].id apl lelement de tab
+    chaine +='<button type="button" class="btn btn-primary id="'+ tab[i].id +'" btnc">commentaires</button></div></div>';  // le botton conserne on en 1
+}
+return chaine;
+   }
+// fonction pour recuperer les commentaires
+   function commentaires() {      
+      //  console.log("liste des commentaires")
+      // "https://jsonplaceholder.typicode.com/posts/1/comments"
+     $(".commentaires").click(function () {       //deviser le code par resposabilite    //
+      //console.log("comm suit au click")
+            let id= $(this).attr("id") // pour recuperer un Id dans un botton  // $(this) un element de DOM (SELECTEUR)
+             //    console.log(id);
+                let request = $.ajax({   
+          url: "https://jsonplaceholder.typicode.com/posts/"+id+"/comments",
+          method: "GET",
+          dataType: "json",
+        });
+        request.done(function (response) {  // cest la ou on va recuperer les commentaires
+           // traitement
+           console.log(response);
+           let commentaires ="<ol>"
+          $.each(response, function () {
+            commentaires+='<li>'+this.body+'</li>' ;    // this tt cour (dans le contest d'un objet JS{.....})
+          })
+          commentaires+="</ol>";
+          //console.log(commentaires);
+          $("#+id").after(commentaires);    //$("#+id") selecteur dinamique //pour la concatination entre chaine de caractaire + //(.after) inserer apre le button         
+        });
+      })
+      }   
+    </script>
+  </body>
+</html>
